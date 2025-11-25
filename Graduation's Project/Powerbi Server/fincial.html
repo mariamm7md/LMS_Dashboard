@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .report-container {
+        position: relative;
+        padding-top: 56.25%;
+        height: 0;
+        overflow: hidden;
+      }
+      .report-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+      }
+
+      @media (max-width: 768px) {
+        .report-container {
+          padding-top: 75%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+      <div class="report-container" id="reportContainer"></div>
+
+      <script>
+        const urlParams = new URLSearchParams(window.location.search);
+
+        const defaultSrc =
+          "https://app.powerbi.com/reportEmbed?reportId=82e0465e-1d8b-433a-80b0-455b938d8581&autoAuth=true&embeddedDemo=true";
+
+        const src = urlParams.get("src") || defaultSrc;
+
+        const iframe = document.createElement("iframe");
+        iframe.title = "Dynamic Power BI Report";
+        iframe.src = src;
+        iframe.allowFullscreen = true;
+
+        document.getElementById("reportContainer").appendChild(iframe);
+      </script>
+    </body>
+  </body>
+</html>
